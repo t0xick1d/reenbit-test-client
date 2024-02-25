@@ -1,0 +1,21 @@
+$main-fonts: 'Saira',  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+$text-main-color: rgba(51, 51, 51, 1);
+$background-main: rgba(105, 105, 105, 1);
+
+$screen-mobile: 480px;
+$screen-tablet: 768px;
+$screen-compucter: 1280px;
+
+ %display-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+ %display-start{
+  display: flex;
+  justify-content: flex-start;
+ } 
