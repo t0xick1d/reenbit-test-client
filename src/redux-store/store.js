@@ -19,13 +19,12 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 const weatherPersistConfig = {
   key: 'weather',
   storage,
-  whitelist: ['token'],
+  whitelist: ['listTrip'],
 };
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(weatherPersistConfig, weatherReducer),
-    weatherReducer: weatherReducer,
+    weatherReducer: persistReducer(weatherPersistConfig, weatherReducer),
     [weatherApi.reducerPath]: weatherApi.reducer,
   },
   middleware: getDefaultMiddleware => [

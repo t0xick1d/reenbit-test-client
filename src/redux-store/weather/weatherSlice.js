@@ -1,16 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {};
+const initialState = {
+  filter: '',
+  listTrip: [],
+  activeModal: true,
+};
 
 const weatherSlice = createSlice({
   name: 'Weather',
   initialState,
   reducers: {
-    setActiveItem: (state, action) => {
-      state.activeItem = action.payload;
+    setfilterWeather: (state, action) => {
+      state.filter = action.payload;
     },
-    updatePage: (state, action) => {
-      state.page = action.payload;
+
+    addTrip: (state, action) => {
+      state.listTrip.push(action.payload);
+    },
+    setActiveModal: (state, action) => {
+      state.activeModal = action.payload;
     },
     updateNewSwitch: state => {
       console.log(!state.changeNew);
@@ -19,6 +27,6 @@ const weatherSlice = createSlice({
   },
 });
 
-export const { setActiveItem, updatePage, updateNewSwitch } =
+export const { setfilterWeather, addTrip, setActiveModal } =
   weatherSlice.actions;
 export default weatherSlice.reducer;

@@ -1,0 +1,22 @@
+.modal{ 
+ min-height: 100vh;
+ min-width: 100%;
+ background-color: rgba(0, 0,0,0.4);
+ position: fixed;
+ top: 0;
+ left: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ opacity: 0;
+ transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.active{ 
+ opacity: 1;
+}
+.modalContent{ 
+ padding: 30px;
+ border-radius: 15px;
+ background-color: white;
+ width: 50%;
+}
