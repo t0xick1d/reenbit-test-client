@@ -12,7 +12,7 @@ function App() {
   const activeModal = useSelector(state => state.weatherReducer.activeModal);
   const dispatch = useDispatch();
   if (listTrips.length === 0) {
-    dispatch(addTrip({ location: 'Berlin', date1: '1', date2: '2' }));
+    dispatch(addTrip({ city: 'Berlin', startDate: '1', endDate: '2' }));
   }
   return (
     <div className={s.app}>

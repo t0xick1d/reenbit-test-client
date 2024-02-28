@@ -7,16 +7,16 @@ const WeatherList = ({ weatherList = [], activeModal, setActiveModal }) => {
     state.weatherReducer.filter.toLowerCase()
   );
   const visibleTrip = weatherList.filter(trip =>
-    trip.location.toLowerCase().includes(filter)
+    trip.city.toLowerCase().includes(filter)
   );
   return (
     <ul>
       {visibleTrip.map((e, i) => {
         return (
-          <li key={`${e.location}${i}`}>
-            <h3> {e.location}</h3>
+          <li key={`${e.name}${i}`}>
+            <h3> {e.city}</h3>
             <div>
-              <p>{e.date1}</p> - <p>{e.date2}</p>
+              <p>{e.startDate}</p> - <p>{e.endDate}</p>
             </div>
           </li>
         );

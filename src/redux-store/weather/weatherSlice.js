@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   filter: '',
   listTrip: [],
-  activeModal: true,
+  activeModal: false,
 };
 
 const weatherSlice = createSlice({
