@@ -8,7 +8,8 @@ const WeatherCard = item => {
       <h4>{weekDay}</h4>
       <p>{item.item.icon}</p>
       <p>
-        {item.item.tempmin}/{item.item.tempmax}
+        {Math.round(((item.item.tempmin - 32) * 5) / 9)}/
+        {Math.round(((item.item.tempmax - 32) * 5) / 9)}
       </p>
     </div>
   );
