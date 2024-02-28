@@ -4,6 +4,7 @@ const initialState = {
   filter: '',
   listTrip: [],
   activeModal: false,
+  activeTrip: 0,
 };
 
 const weatherSlice = createSlice({
@@ -20,6 +21,9 @@ const weatherSlice = createSlice({
     setActiveModal: (state, action) => {
       state.activeModal = action.payload;
     },
+    setActiveTrip: (state, action) => {
+      state.activeTrip = action.payload;
+    },
     updateNewSwitch: state => {
       console.log(!state.changeNew);
       state.isFreshGamesFirst = !state.isFreshGamesFirst;
@@ -27,6 +31,6 @@ const weatherSlice = createSlice({
   },
 });
 
-export const { setfilterWeather, addTrip, setActiveModal } =
+export const { setfilterWeather, addTrip, setActiveTrip, setActiveModal } =
   weatherSlice.actions;
 export default weatherSlice.reducer;

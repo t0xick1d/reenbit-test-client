@@ -1,18 +1,26 @@
 import Filter from './components/Filter/Filter';
 import s from './App.module.scss';
-import { useGetWeatherQuery } from './redux-store/weather/weatherApi';
 import { addTrip, setActiveModal } from './redux-store/weather/weatherSlice';
-import WeatherList from './components/weatherList/WeatherList';
+import TripList from './components/TripList/TripList';
+import { DateTime } from 'luxon';
 
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from './components/Modal/Modal';
+import WeatherList from './components/WeatherList/WeatherList';
+import FirstDay from './components/FirstDay/FirstDay';
 
 function App() {
   const listTrips = useSelector(state => state.weatherReducer.listTrip);
   const activeModal = useSelector(state => state.weatherReducer.activeModal);
   const dispatch = useDispatch();
   if (listTrips.length === 0) {
-    dispatch(addTrip({ city: 'Berlin', startDate: '1', endDate: '2' }));
+    dispatch(
+      addTrip({
+        city: 'Berlin',
+        startDate: DateTime.now().toFormat('y-LL-dd'),
+        endDate: DateTime.now().plus({ days: 2 }).toFormat('y-LL-dd'),
+      })
+    );
   }
   return (
     <div className={s.app}>
@@ -22,16 +30,19 @@ function App() {
             Weather <span>Forecast</span>
           </h1>
           <Filter />
-          <WeatherList
+          <TripList
             weatherList={listTrips}
             activeModal={activeModal}
             setActiveModal={setActiveModal}
           />
+          <WeatherList />
         </div>
-        <div className={`${s.section}  ${s.sectionSecond}`}>section 2</div>
         {activeModal && (
           <Modal setActiveModal={setActiveModal} activeModal={activeModal} />
         )}
+        <div className={`${s.section}  ${s.sectionSecond}`}>
+          <FirstDay />
+        </div>
       </div>
     </div>
   );

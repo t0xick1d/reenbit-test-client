@@ -2,19 +2,24 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const key = 'X29V6K3L6T95CJD3RD5AGVV9N';
 
+// https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date1]/[date2]?key=YOUR_API_KEY 
+
 export const weatherApi = createApi({
   reducerPath: 'weatherApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/London,UK?key=${key}`,
+    baseUrl: `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/`,
   }),
   endpoints: builder => ({
     getWeather: builder.query({
-      query(params) {
-        return {
-          method: 'GET',
-        };
+      query: payload => {
+        const cityTrim = payload.city
+          .split('')
+          .filter(e => e.trim().length)
+          .join('');
+        return `${cityTrim}/${payload.startDate}/${payload.endDate}?key=${key}`;
       },
-      invalidatesTags: ['Weather'],
+      method: 'GET',
+      providesTags: ['Weather'],
     }),
   }),
 });
