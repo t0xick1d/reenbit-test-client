@@ -10,7 +10,11 @@ import s from './TripList.module.scss';
 
 const TripCard = ({ city = '', startDate = '', endDate = '', index = 0 }) => {
   const activeTrip = useSelector(state => state.weatherReducer.activeTrip);
-  const { data, error, isLoading } = useGetCityQuery({
+  const {
+    data = { hits: [{ webformatURL: '' }] },
+    error,
+    isLoading,
+  } = useGetCityQuery({
     city,
   });
   const dispatch = useDispatch();

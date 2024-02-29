@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { DateTime } from 'luxon';
 import cities from '../../top-1000-cities.json';
+import { TiDelete } from 'react-icons/ti';
 
 import { addTrip } from '../../redux-store/weather/weatherSlice';
 
@@ -64,8 +65,15 @@ const Modal = ({ setActiveModal, activeModal }) => {
   return (
     <div className={activeModal ? `${s.modal} ${s.active}` : s.modal}>
       <div className={s.modalContent}>
+        <TiDelete
+          onClick={() => {
+            dispatch(setActiveModal(!activeModal));
+          }}
+          className={s.closeSvg}
+        />
         <div>
           <h3>Create trip</h3>
+
           <form
             onSubmit={formik.handleSubmit}
             autoComplete="off"
@@ -89,7 +97,7 @@ const Modal = ({ setActiveModal, activeModal }) => {
               onBlur={formik.handleBlur}
               value={formik.values.city}
             />
-            <ul>
+            <ul className={s.containeSearch}>
               {searchList.length < 5 &&
                 searchList.map(e => {
                   return (
@@ -98,6 +106,7 @@ const Modal = ({ setActiveModal, activeModal }) => {
                         formik.setFieldValue('city', e.name);
                         setSearchList([]);
                       }}
+                      className={s.searchLi}
                     >
                       {e.name}
                     </li>
@@ -144,14 +153,19 @@ const Modal = ({ setActiveModal, activeModal }) => {
                 {formik.errors.endDate}
               </div>
             ) : null}
-            <button type="submit">Save</button>
+            <div className={s.buttonsContainer}>
+              <button type="submit" className={s.button}>
+                Save
+              </button>
+              <button
+                type="button"
+                className={`${s.button} ${s.buttonCancel}`}
+                onClick={() => dispatch(setActiveModal(!activeModal))}
+              >
+                Cancel
+              </button>
+            </div>
           </form>
-          <button
-            type="button"
-            onClick={() => dispatch(setActiveModal(!activeModal))}
-          >
-            Cancel
-          </button>
         </div>
       </div>
     </div>

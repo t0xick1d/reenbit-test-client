@@ -10,10 +10,10 @@ import WeatherList from './components/WeatherLis/WeatherList';
 import FirstDay from './components/FirstDay/FirstDay';
 
 function App() {
-  const listTrips = useSelector(state => state.weatherReducer.listTrip);
   const activeModal = useSelector(state => state.weatherReducer.activeModal);
+  const weatherList = useSelector(state => state.weatherReducer.listTrip);
   const dispatch = useDispatch();
-  if (listTrips.length === 0) {
+  if (weatherList.length === 0) {
     dispatch(
       addTrip({
         city: 'Berlin',
@@ -30,11 +30,7 @@ function App() {
             Weather <span>Forecast</span>
           </h1>
           <Filter />
-          <TripList
-            weatherList={listTrips}
-            activeModal={activeModal}
-            setActiveModal={setActiveModal}
-          />
+          <TripList activeModal={activeModal} setActiveModal={setActiveModal} />
           <WeatherList />
         </div>
         {activeModal && (
