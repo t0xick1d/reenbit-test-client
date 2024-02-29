@@ -18,13 +18,11 @@
 }
 .section{ 
  overflow:scroll;
- outline: 1px solid rgba(196, 196, 196, 1);
  background-color: rgba(255, 255, 255, 1);
   &::-webkit-scrollbar { width: 0 !important }
 }
 .sectionFirst{ 
  min-width: 60%;
- outline: 1px solid rgba(196, 196, 196, 1);
 }
 .sectionSecond{ 
   min-width: 40%;

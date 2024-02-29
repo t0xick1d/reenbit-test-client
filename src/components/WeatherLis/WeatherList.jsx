@@ -4,6 +4,8 @@ import WeatherCard from './WeatherCard';
 import { useGetWeatherQuery } from '../../redux-store/weather/weatherApi';
 import { useSelector } from 'react-redux';
 
+import s from './WeatherList.module.scss';
+
 const WeatherList = () => {
   const listTrip = useSelector(state => state.weatherReducer.listTrip);
   const activeTrip = useSelector(state => state.weatherReducer.activeTrip);
@@ -17,15 +19,19 @@ const WeatherList = () => {
     return <Spinner />;
   }
   if (error) {
-    return <div> {error} </div>;
+    return (
+      <div>
+        {error.status} {JSON.stringify(error.data)}
+      </div>
+    );
   }
   if (!isLoading) {
     return (
-      <div>
+      <ul className={ s.ulContainer}>
         {data.days.map((e, i) => {
           return <WeatherCard item={e} key={`weatherCard${i}`} />;
         })}
-      </div>
+      </ul>
     );
   }
 };

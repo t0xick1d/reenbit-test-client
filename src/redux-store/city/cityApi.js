@@ -3,19 +3,23 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const key = 'key=32947262-816ad506c9db86c30ae5e3e11';
 
 export const cityApi = createApi({
-  reducerPath: 'weatherApi',
+  reducerPath: 'cityApi',
   baseQuery: fetchBaseQuery({
     baseUrl: `https://pixabay.com/api`,
   }),
   endpoints: builder => ({
-    getCityImg: builder.query({
+    getCity: builder.query({
       query: payload => {
-        return `?q=${payload.city}&page=$1&${key}&image_type=photo&orientation=horizontal&per_page=3`;
+        const cityTrim = payload.city
+          .split('')
+          .filter(e => e.trim().length)
+          .join('');
+        return `?q=${cityTrim}&page=$1&${key}&image_type=photo&orientation=horizontal&per_page=3`;
       },
       method: 'GET',
-      providesTags: ['CityImg'],
+      providesTags: ['City'],
     }),
   }),
 });
 
-export const { useGetCityImgQuery } = cityApi;
+export const { useGetCityQuery } = cityApi;

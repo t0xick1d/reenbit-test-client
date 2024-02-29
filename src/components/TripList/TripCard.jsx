@@ -1,22 +1,25 @@
 import React from 'react';
-import Spinner from '../Spiner/Spiner';
 import { setActiveTrip } from '../../redux-store/weather/weatherSlice';
-import { useGetCityImgQuery } from '../../redux-store/city/cityApi';
+import { useGetCityQuery } from '../../redux-store/city/cityApi';
 import { useDispatch, useSelector } from 'react-redux';
 
 import s from './TripList.module.scss';
 
-const TripCard = ({ city, startDate, endDate, index }) => {
+const TripCard = ({ city = '', startDate = '', endDate = '', index = 0 }) => {
   const activeTrip = useSelector(state => state.weatherReducer.activeTrip);
-  const { data, error, isLoading } = useGetCityImgQuery({
+  const { data, error, isLoading } = useGetCityQuery({
     city,
   });
   const dispatch = useDispatch();
   if (isLoading) {
-    return <Spinner />;
+    return <div>Wait on img</div>;
   }
   if (error) {
-    return <div> {error} </div>;
+    return (
+      <div>
+        {error.status} {JSON.stringify(error.data)}
+      </div>
+    );
   }
   if (!isLoading) {
     return (

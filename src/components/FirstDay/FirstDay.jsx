@@ -20,7 +20,11 @@ const FirstDay = () => {
     return <Spinner />;
   }
   if (error) {
-    return <div> {error} </div>;
+    return (
+      <div>
+        {error.status} {JSON.stringify(error.data)}
+      </div>
+    );
   }
   if (!isLoading) {
     const weekDay = DateTime.fromISO(data.days[0].datetime).toFormat('EEEE');

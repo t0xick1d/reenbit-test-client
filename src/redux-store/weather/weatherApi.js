@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const key = 'JYCC66DUD5WQYLGQYTRVFLKRK';
+const key = 'X29V6K3L6T95CJD3RD5AGVV9N';
 
-// https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date1]/[date2]?key=YOUR_API_KEY 
+//JYCC66DUD5WQYLGQYTRVFLKRK
+// https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date1]/[date2]?key=YOUR_API_KEY
 
 export const weatherApi = createApi({
   reducerPath: 'weatherApi',

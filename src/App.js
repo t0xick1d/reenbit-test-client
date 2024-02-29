@@ -6,7 +6,7 @@ import { DateTime } from 'luxon';
 
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from './components/Modal/Modal';
-import WeatherList from './components/WeatherList/WeatherList';
+import WeatherList from './components/WeatherLis/WeatherList';
 import FirstDay from './components/FirstDay/FirstDay';
 
 function App() {

@@ -34,9 +34,9 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
-    weatherApi.middleware,
-    cityApi.middleware,
+    })
+      .concat(cityApi.middleware)
+      .concat(weatherApi.middleware),
   ],
 });
 
