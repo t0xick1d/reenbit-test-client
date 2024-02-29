@@ -26,7 +26,7 @@ function App() {
     <div className={s.app}>
       <div className={s.mainContainer}>
         <div className={`${s.section}  ${s.sectionFirst}`}>
-          <h1>
+          <h1 className={s.title}>
             Weather <span>Forecast</span>
           </h1>
           <Filter />

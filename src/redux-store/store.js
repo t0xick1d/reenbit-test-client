@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 
 import weatherReducer from './weather/weatherSlice';
 import { weatherApi } from './weather/weatherApi';
+import { cityApi } from './city/cityApi';
 
 import { setupListeners } from '@reduxjs/toolkit/query';
 
@@ -26,6 +27,7 @@ export const store = configureStore({
   reducer: {
     weatherReducer: persistReducer(weatherPersistConfig, weatherReducer),
     [weatherApi.reducerPath]: weatherApi.reducer,
+    [cityApi.reducerPath]: cityApi.reducer,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
@@ -34,6 +36,7 @@ export const store = configureStore({
       },
     }),
     weatherApi.middleware,
+    cityApi.middleware,
   ],
 });
 

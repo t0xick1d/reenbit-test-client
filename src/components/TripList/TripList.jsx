@@ -1,5 +1,7 @@
 import React from 'react';
 import TripCard from './TripCard';
+import s from './TripList.module.scss';
+import { IoIosAdd } from 'react-icons/io';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -12,7 +14,7 @@ const TripList = ({ weatherList = [], activeModal, setActiveModal }) => {
     trip.city.toLowerCase().includes(filter)
   );
   return (
-    <ul>
+    <ul className={s.container}>
       {visibleTrip.map((e, i) => {
         return (
           <TripCard
@@ -25,10 +27,14 @@ const TripList = ({ weatherList = [], activeModal, setActiveModal }) => {
         );
       })}
       <li
-        key={`${visibleTrip[0].location}${visibleTrip.length + 1}`}
+        key={`${visibleTrip[0].city}${visibleTrip.length + 1}`}
         onClick={() => dispatch(setActiveModal(!activeModal))}
+        className={s.addTripConatiner}
       >
-        <h3>Add trip</h3>
+        <div>
+          <IoIosAdd />
+          <h3>Add trip</h3>
+        </div>
       </li>
     </ul>
   );

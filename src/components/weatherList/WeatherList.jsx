@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 const WeatherList = () => {
   const listTrip = useSelector(state => state.weatherReducer.listTrip);
   const activeTrip = useSelector(state => state.weatherReducer.activeTrip);
-  const { city, startDate, endDate } = listTrip[activeTrip];
+  const { city = '', startDate = '', endDate = '' } = listTrip[activeTrip];
   const { data, error, isLoading } = useGetWeatherQuery({
     city,
     startDate,
