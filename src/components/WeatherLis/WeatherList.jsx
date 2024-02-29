@@ -26,13 +26,16 @@ const WeatherList = () => {
     );
   }
   if (!isLoading) {
-    return (
-      <ul className={ s.ulContainer}>
-        {data.days.map((e, i) => {
-          return <WeatherCard item={e} key={`weatherCard${i}`} />;
-        })}
-      </ul>
-    );
+   return (
+     <div className={s.container}>
+       <h3>Week</h3>
+       <ul className={s.ulContainer}>
+         {data.days.map((e, i) => {
+           return <WeatherCard item={e} key={`weatherCard${i}`} />;
+         })}
+       </ul>
+     </div>
+   );
   }
 };
 

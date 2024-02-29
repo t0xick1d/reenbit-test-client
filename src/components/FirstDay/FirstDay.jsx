@@ -4,6 +4,8 @@ import { useGetWeatherQuery } from '../../redux-store/weather/weatherApi';
 import { useSelector } from 'react-redux';
 import { DateTime } from 'luxon';
 
+import s from './FirstDay.module.scss';
+
 const FirstDay = () => {
   const listTrip = useSelector(state => state.weatherReducer.listTrip);
   const activeTrip = useSelector(state => state.weatherReducer.activeTrip);
@@ -29,10 +31,10 @@ const FirstDay = () => {
   if (!isLoading) {
     const weekDay = DateTime.fromISO(data.days[0].datetime).toFormat('EEEE');
     return (
-      <div>
+      <div className={s.container}>
         <h3>{weekDay}</h3>
         <p>{data.currentConditions.icon}</p>
-        <p>{Math.round(((data.currentConditions.temp - 32) * 5) / 9)}</p>
+        <p>{Math.round(((data.currentConditions.temp - 32) * 5) / 9)} ℃</p>
         <h4>{data.address}</h4>
       </div>
     );
