@@ -1,8 +1,11 @@
 import React from 'react';
-import { setActiveTrip } from '../../redux-store/weather/weatherSlice';
+import {
+  setActiveTrip,
+  removeTrip,
+} from '../../redux-store/weather/weatherSlice';
 import { useGetCityQuery } from '../../redux-store/city/cityApi';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { TiDelete } from 'react-icons/ti';
 import s from './TripList.module.scss';
 
 const TripCard = ({ city = '', startDate = '', endDate = '', index = 0 }) => {
@@ -31,6 +34,12 @@ const TripCard = ({ city = '', startDate = '', endDate = '', index = 0 }) => {
           index === activeTrip ? s.activeCard : ''
         }`}
       >
+        <TiDelete
+          onClick={() => {
+            dispatch(removeTrip(index));
+          }}
+          className={s.deleteSvg}
+        />
         <img src={data.hits[0].webformatURL} alt={data.hits[0].tags} />
         <div className={s.infoContainer}>
           <h3> {city}</h3>

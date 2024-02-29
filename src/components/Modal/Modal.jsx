@@ -22,7 +22,6 @@ const Modal = ({ setActiveModal, activeModal }) => {
     const array = cities.filter(str => {
       return str.name.toLowerCase().includes(value.toLowerCase());
     });
-    console.log(array);
     setSearchList(array);
   };
   const formik = useFormik({

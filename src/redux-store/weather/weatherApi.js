@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const key = 'JYCC66DUD5WQYLGQYTRVFLKRK';
-//X29V6K3L6T95CJD3RD5AGVV9N 
+const key = 'X29V6K3L6T95CJD3RD5AGVV9N ';
+//JYCC66DUD5WQYLGQYTRVFLKRK
 
 // https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date1]/[date2]?key=YOUR_API_KEY
 

@@ -9,7 +9,7 @@ import s from './FirstDay.module.scss';
 const FirstDay = () => {
   const listTrip = useSelector(state => state.weatherReducer.listTrip);
   const activeTrip = useSelector(state => state.weatherReducer.activeTrip);
-  const { city } = listTrip[activeTrip];
+  const { city = '' } = listTrip[activeTrip];
   const startDate = DateTime.now().toFormat('y-LL-dd');
   const endDate = DateTime.now().toFormat('y-LL-dd');
   const { data, error, isLoading } = useGetWeatherQuery({

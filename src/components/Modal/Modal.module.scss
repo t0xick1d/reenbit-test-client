@@ -19,4 +19,25 @@
  border-radius: 15px;
  background-color: white;
  width: 50%;
+ & input{ 
+  min-width: 50%;
+ padding: 5px 15px 5px;
+ cursor: pointer;
+ text-align: start;
+ font-size: 17px;
+
+ background-color: #f2f4f8;
+ padding: 10px 20px;
+ border-radius: 10px;
+
+  border: 1px solid #454545;
+  border-radius: 10;
+  font-size: 16;
+  font-weight: 300;
+  padding: 5;
+  &:hover, &:focus {
+     border: 1px solid blue;
+     outline: 'none';
+  }
+ }
 }
