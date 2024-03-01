@@ -26,8 +26,27 @@ const TripCard = ({ city = '', startDate = '', endDate = '', index = 0 }) => {
   }
   if (error) {
     return (
-      <div>
+      <div
+        onClick={e => {
+          dispatch(setActiveTrip(index));
+        }}
+        className={`${s.cardContainer} ${
+          index === activeTrip ? s.activeCard : ''
+        }`}
+      >
+        <TiDelete
+          onClick={() => {
+            dispatch(removeTrip(index));
+          }}
+          className={s.deleteSvg}
+        />
         {error.status} {JSON.stringify(error.data)}
+        <div className={s.infoContainer}>
+          <h3> {city}</h3>
+          <div className={s.dataContainer}>
+            <p>{startDate}</p> - <p>{endDate}</p>
+          </div>
+        </div>
       </div>
     );
   }
