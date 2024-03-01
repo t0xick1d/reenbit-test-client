@@ -1,6 +1,8 @@
 .container{ 
  padding: 15px;
  font-weight: 400;
+ overflow: scroll;
+    &::-webkit-scrollbar { width: 0 !important }
 }
 
 .ulContainer{ 
@@ -21,6 +23,6 @@
  background-color: rgb(246, 246, 246);
  box-shadow: inset;
  &:hover{ 
-  border: 1px solid rgb(100, 160, 245);
+  border: 1px solid #66a1f5;
  }
 }

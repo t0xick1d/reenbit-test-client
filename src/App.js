@@ -16,9 +16,9 @@ function App() {
   if (weatherList.length === 0) {
     dispatch(
       addTrip({
-        city: 'Berlin',
-        startDate: DateTime.now().toFormat('y-LL-dd'),
-        endDate: DateTime.now().plus({ days: 2 }).toFormat('y-LL-dd'),
+        city: 'Barcelona',
+        startDate: DateTime.now().plus({ day: 1 }).toFormat('y-LL-dd'),
+        endDate: DateTime.now().plus({ days: 3 }).toFormat('y-LL-dd'),
       })
     );
   }
