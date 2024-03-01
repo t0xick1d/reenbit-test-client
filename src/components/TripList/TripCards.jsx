@@ -18,6 +18,9 @@ const TripCard = ({ city = '', startDate = '', endDate = '', index = 0 }) => {
     city,
   });
   const dispatch = useDispatch();
+  const filter = useSelector(state =>
+    state.weatherReducer.filter.toLowerCase()
+  );
   if (isLoading) {
     return <div>Wait on img</div>;
   }
@@ -28,7 +31,7 @@ const TripCard = ({ city = '', startDate = '', endDate = '', index = 0 }) => {
       </div>
     );
   }
-  if (!isLoading) {
+  if (!isLoading && city.toLowerCase().includes(filter)) {
     return (
       <li
         onClick={e => {

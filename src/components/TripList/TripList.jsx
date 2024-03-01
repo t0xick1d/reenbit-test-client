@@ -8,15 +8,10 @@ import { useSelector, useDispatch } from 'react-redux';
 const TripList = ({ activeModal, setActiveModal }) => {
   const dispatch = useDispatch();
   const weatherList = useSelector(state => state.weatherReducer.listTrip);
-  const filter = useSelector(state =>
-    state.weatherReducer.filter.toLowerCase()
-  );
-  const visibleTrip = weatherList.filter(trip =>
-    trip.city.toLowerCase().includes(filter)
-  );
+
   return (
     <ul className={s.container}>
-      {visibleTrip.map((e, i) => {
+      {weatherList.map((e, i) => {
         return (
           <TripCard
             key={`${e.city}${i}`}
@@ -28,7 +23,7 @@ const TripList = ({ activeModal, setActiveModal }) => {
         );
       })}
       <li
-        key={`${visibleTrip.length + 1}`}
+        key={`${weatherList.length + 1}`}
         onClick={() => dispatch(setActiveModal(!activeModal))}
         className={s.addTripConatiner}
       >
