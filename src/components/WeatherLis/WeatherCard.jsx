@@ -6,7 +6,6 @@ import s from './WeatherList.module.scss';
 
 const WeatherCard = item => {
   const weekDay = DateTime.fromISO(item.item.datetime).toFormat('EEEE');
-  console.log(item);
   return (
     <li className={s.cardContainer}>
       <h4>{weekDay}</h4>
