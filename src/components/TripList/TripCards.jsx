@@ -28,10 +28,14 @@ const TripCard = ({ city = '', startDate = '', endDate = '', index = 0 }) => {
     return (
       <div
         onClick={e => {
-          dispatch(setActiveTrip(index));
+          dispatch(setActiveTrip({ city, startDate, endDate }));
         }}
         className={`${s.cardContainer} ${
-          index === activeTrip ? s.activeCard : ''
+          city === activeTrip.city &&
+          startDate === activeTrip.startDate &&
+          endDate === activeTrip.endDate
+            ? s.activeCard
+            : ''
         }`}
       >
         <TiDelete
@@ -62,7 +66,7 @@ const TripCard = ({ city = '', startDate = '', endDate = '', index = 0 }) => {
       >
         <TiDelete
           onClick={() => {
-            dispatch(removeTrip(index));
+            dispatch(removeTrip(city));
           }}
           className={s.deleteSvg}
         />

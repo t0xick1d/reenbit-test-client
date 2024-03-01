@@ -23,7 +23,7 @@ const TripList = ({ activeModal, setActiveModal }) => {
         );
       })}
       <li
-        key={`${weatherList.length + 1}`}
+        key={`addTrip${weatherList.length + 1}`}
         onClick={() => dispatch(setActiveModal(!activeModal))}
         className={s.addTripConatiner}
       >

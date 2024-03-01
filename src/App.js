@@ -1,6 +1,10 @@
 import Filter from './components/Filter/Filter';
 import s from './App.module.scss';
-import { addTrip, setActiveModal } from './redux-store/weather/weatherSlice';
+import {
+  addTrip,
+  setActiveModal,
+  setActiveTrip,
+} from './redux-store/weather/weatherSlice';
 import TripList from './components/TripList/TripList';
 import { DateTime } from 'luxon';
 
@@ -22,6 +26,7 @@ function App() {
       })
     );
   }
+  dispatch(setActiveTrip(weatherList[0]));
   return (
     <div className={s.app}>
       <div className={s.mainContainer}>

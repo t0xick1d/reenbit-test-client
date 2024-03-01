@@ -25,6 +25,7 @@ const weatherSlice = createSlice({
     },
     removeTrip: (state, action) => {
       state.listTrip = state.listTrip.filter((e, i) => i !== action.payload);
+      state.activeTrip = { city: '', startDate: '', endDate: '' };
     },
   },
 });
