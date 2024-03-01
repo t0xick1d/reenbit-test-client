@@ -24,7 +24,7 @@ const TripCard = ({ city = '', startDate = '', endDate = '', index = 0 }) => {
   if (isLoading) {
     return <div>Wait on img</div>;
   }
-  if (error) {
+  if (error && city.toLowerCase().includes(filter)) {
     return (
       <div
         onClick={e => {
