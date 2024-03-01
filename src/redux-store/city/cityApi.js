@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const key = 'key=32947262-816ad506c9db86c30ae5e3e111';
+const key = 'key=32947262-816ad506c9db86c30ae5e3e11';
 
 export const cityApi = createApi({
   reducerPath: 'cityApi',
