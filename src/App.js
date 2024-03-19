@@ -26,7 +26,36 @@ function App() {
       })
     );
   }
-  dispatch(setActiveTrip(weatherList[0]));
+ dispatch(setActiveTrip(weatherList[0]));
+
+ function findPath(mountain) {
+   const n = mountain.length;
+   const dp = new Array(n).fill().map(() => []);
+
+   // Copy the last row of the mountain to the new array
+   dp[n - 1] = [...mountain[n - 1]];
+
+   for (let i = n - 2; i >= 0; i--) {
+     for (let j = 0; j < mountain[i].length; j++) {
+       dp[i][j] =
+         mountain[i][j] +
+         Math.max(dp[i + 1][j], dp[i + 1][j + 1] || 0, dp[i + 1][j - 1] || 0);
+     }
+   }
+
+   return Math.max(...dp[0]);
+ }
+
+ // Example usage
+ const mountain = [
+   [6],
+   [7, 10],
+   [12, 11, 9],
+   [90, 25, 13, 1],
+   [90, 25, 13, 1, 10, 96],
+ ];
+ console.log(findPath(mountain));
+
   return (
     <div className={s.app}>
       <div className={s.mainContainer}>

@@ -14,7 +14,7 @@ export const cityApi = createApi({
           .split('')
           .filter(e => e.trim().length)
           .join('');
-        return `?q=${cityTrim}&page=$1&${key}&image_type=photo&orientation=horizontal&per_page=3`;
+        return `?q=${cityTrim}&page=1&${key}&image_type=photo&orientation=horizontal&per_page=3`;
       },
       method: 'GET',
       providesTags: ['City'],
